@@ -9,7 +9,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "import:locher": "node convert-ratebeer-csv-to-json.js locher.csv 'Locher Appenzeller Bier' > data.json && node import-data.js",
+    "import:schuetzengarten": "node convert-ratebeer-csv-to-json.js schuetzengarten.csv 'Schützengarten' > data.json && node import-data.js",
+    "import:konrhausbraeu": "node convert-ratebeer-csv-to-json.js kornhausbraeu.csv 'Kornhausbräu' > data.json && node import-data.js",
+    "start": "npm run import:locher && npm run import:schuetzengarten && npm run import:konrhausbraeu"
   },
   "author": "",
   "license": "ISC"
