@@ -6,10 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RatingBar;
-import android.widget.TextView;
-import android.widget.ToggleButton;
+import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -118,6 +115,7 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         intent.putExtra(CreateRatingActivity.RATING, v);
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, addRatingBar, "rating");
         startActivity(intent, options.toBundle());
+        ratingBar.setIsIndicator(true);
     }
 
     @OnClick(R.id.actionsButton)
@@ -125,6 +123,13 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         View view = getLayoutInflater().inflate(R.layout.single_bottom_sheet_dialog, null);
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(view);
+
+        Button ratingButton = (Button)dialog.findViewById(R.id.giveRating);
+        ratingButton.setOnClickListener(v -> {
+            addRatingBar.setIsIndicator(false);
+            dialog.dismiss();
+        });
+
         dialog.show();
     }
 
