@@ -106,7 +106,7 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         model.getWish().observe(this, this::toggleWishlistView);
 
         recyclerView.setAdapter(adapter);
-        addRatingBar.setOnRatingBarChangeListener(this::addNewRating);
+        //addRatingBar.setOnRatingBarChangeListener(this::addNewRating);
     }
 
     private void addNewRating(RatingBar ratingBar, float v, boolean b) {
@@ -115,7 +115,6 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         intent.putExtra(CreateRatingActivity.RATING, v);
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, addRatingBar, "rating");
         startActivity(intent, options.toBundle());
-        ratingBar.setIsIndicator(true);
     }
 
     @OnClick(R.id.actionsButton)
@@ -126,7 +125,6 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
 
         Button ratingButton = (Button)dialog.findViewById(R.id.giveRating);
         ratingButton.setOnClickListener(v -> {
-            addRatingBar.setIsIndicator(false);
             dialog.dismiss();
         });
 
@@ -142,6 +140,7 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
                 .into(photo);
         ratingBar.setNumStars(5);
         ratingBar.setRating(item.getAvgRating());
+        addRatingBar.setRating(model.getMyAvgRating());
         avgRating.setText(getResources().getString(R.string.fmt_avg_rating, item.getAvgRating()));
         numRatings.setText(getResources().getString(R.string.fmt_ratings, item.getNumRatings()));
         toolbar.setTitle(item.getName());
