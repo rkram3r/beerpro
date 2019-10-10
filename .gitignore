@@ -9,3 +9,5 @@
 /build
 /captures
 .externalNativeBuild
+**.log
+**google-services.json
