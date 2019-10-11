@@ -55,13 +55,7 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
         return ratings;
     }
 
-    public float getMyAvgRating() {
-        List<Rating> ratingList = myRatings.getValue();
-        if(ratingList==null){
-            return 1;
-        }
-        return ratingList.get(0).getRating();
-    }
+    public LiveData<List<Rating>> getMyRatings() {return myRatings;}
 
     public void setBeerId(String beerId) {
         this.beerId.setValue(beerId);
@@ -73,5 +67,15 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
 
     public Task<Void> toggleItemInWishlist(String itemId) {
         return wishlistRepository.toggleUserWishlistItem(getCurrentUser().getUid(), itemId);
+    }
+
+    public float calcAvgRating(List<Rating> ratings){
+        float sum = 0;
+        if(!ratings.isEmpty()){
+            for(Rating rating : ratings){
+                sum += rating.getRating();
+            }
+        }
+        return sum;
     }
 }

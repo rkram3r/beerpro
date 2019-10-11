@@ -103,6 +103,7 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
 
         model.getBeer().observe(this, this::updateBeer);
         model.getRatings().observe(this, this::updateRatings);
+        model.getMyRatings().observe(this, this::updateMyRatings);
         model.getWish().observe(this, this::toggleWishlistView);
 
         recyclerView.setAdapter(adapter);
@@ -140,7 +141,6 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
                 .into(photo);
         ratingBar.setNumStars(5);
         ratingBar.setRating(item.getAvgRating());
-        myRatingBar.setRating(model.getMyAvgRating());
         avgRating.setText(getResources().getString(R.string.fmt_avg_rating, item.getAvgRating()));
         numRatings.setText(getResources().getString(R.string.fmt_ratings, item.getNumRatings()));
         toolbar.setTitle(item.getName());
@@ -148,6 +148,9 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
 
     private void updateRatings(List<Rating> ratings) {
         adapter.submitList(new ArrayList<>(ratings));
+    }
+    private void updateMyRatings(List<Rating> ratings) {
+        myRatingBar.setRating(model.calcAvgRating(ratings));
     }
 
     @Override
