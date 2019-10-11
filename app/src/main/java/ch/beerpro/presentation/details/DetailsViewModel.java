@@ -39,7 +39,7 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
         beer = beersRepository.getBeer(beerId);
         wish = wishlistRepository.getMyWishForBeer(currentUserId, getBeer());
         ratings = ratingsRepository.getRatingsForBeer(beerId);
-        myRatings = ratingsRepository.getMyRatings(currentUserId);
+        myRatings = ratingsRepository.getMyRatingsForBeer(currentUserId,beerId);
         currentUserId.setValue(getCurrentUser().getUid());
     }
 
@@ -75,7 +75,8 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
             for(Rating rating : ratings){
                 sum += rating.getRating();
             }
+            sum/= ratings.size();
         }
-        return sum/ratings.size();
+        return sum;
     }
 }
