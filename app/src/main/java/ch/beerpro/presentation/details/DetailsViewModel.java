@@ -76,6 +76,6 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
                 sum += rating.getRating();
             }
         }
-        return sum;
+        return sum/ratings.size();
     }
 }
