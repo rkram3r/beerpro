@@ -6,10 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RatingBar;
-import android.widget.TextView;
-import android.widget.ToggleButton;
+import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -71,8 +68,8 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
     @BindView(R.id.category)
     TextView category;
 
-    @BindView(R.id.addRatingBar)
-    RatingBar addRatingBar;
+    @BindView(R.id.myRatingBar)
+    RatingBar myRatingBar;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -106,17 +103,17 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
 
         model.getBeer().observe(this, this::updateBeer);
         model.getRatings().observe(this, this::updateRatings);
+        model.getMyRatings().observe(this, this::updateMyRatings);
         model.getWish().observe(this, this::toggleWishlistView);
 
         recyclerView.setAdapter(adapter);
-        addRatingBar.setOnRatingBarChangeListener(this::addNewRating);
     }
 
-    private void addNewRating(RatingBar ratingBar, float v, boolean b) {
+    private void addNewRating(RatingBar ratingBar) {
         Intent intent = new Intent(this, CreateRatingActivity.class);
         intent.putExtra(CreateRatingActivity.ITEM, model.getBeer().getValue());
-        intent.putExtra(CreateRatingActivity.RATING, v);
-        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, addRatingBar, "rating");
+        intent.putExtra(CreateRatingActivity.RATING, ratingBar.getRating());
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, myRatingBar, "rating");
         startActivity(intent, options.toBundle());
     }
 
@@ -125,6 +122,13 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         View view = getLayoutInflater().inflate(R.layout.single_bottom_sheet_dialog, null);
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(view);
+
+        Button ratingButton = (Button)dialog.findViewById(R.id.giveRating);
+        ratingButton.setOnClickListener(v -> {
+            addNewRating(myRatingBar);
+            dialog.dismiss();
+        });
+
         dialog.show();
     }
 
@@ -144,6 +148,9 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
 
     private void updateRatings(List<Rating> ratings) {
         adapter.submitList(new ArrayList<>(ratings));
+    }
+    private void updateMyRatings(List<Rating> ratings) {
+        myRatingBar.setRating(model.calcAvgRating(ratings));
     }
 
     @Override

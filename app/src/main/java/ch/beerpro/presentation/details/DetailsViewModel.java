@@ -22,6 +22,7 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
     private final MutableLiveData<String> beerId = new MutableLiveData<>();
     private final LiveData<Beer> beer;
     private final LiveData<List<Rating>> ratings;
+    private final LiveData<List<Rating>> myRatings;
     private final LiveData<Wish> wish;
 
     private final LikesRepository likesRepository;
@@ -38,6 +39,7 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
         beer = beersRepository.getBeer(beerId);
         wish = wishlistRepository.getMyWishForBeer(currentUserId, getBeer());
         ratings = ratingsRepository.getRatingsForBeer(beerId);
+        myRatings = ratingsRepository.getMyRatingsForBeer(currentUserId, beerId);
         currentUserId.setValue(getCurrentUser().getUid());
     }
 
@@ -53,6 +55,10 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
         return ratings;
     }
 
+    public LiveData<List<Rating>> getMyRatings() {
+        return myRatings;
+    }
+
     public void setBeerId(String beerId) {
         this.beerId.setValue(beerId);
     }
@@ -63,5 +69,16 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
 
     public Task<Void> toggleItemInWishlist(String itemId) {
         return wishlistRepository.toggleUserWishlistItem(getCurrentUser().getUid(), itemId);
+    }
+
+    public float calcAvgRating(List<Rating> ratings) {
+        float sum = 0;
+        if (!ratings.isEmpty()) {
+            for (Rating rating : ratings) {
+                sum += rating.getRating();
+            }
+            sum /= ratings.size();
+        }
+        return sum;
     }
 }
