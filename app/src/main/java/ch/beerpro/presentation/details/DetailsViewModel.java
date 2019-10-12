@@ -39,7 +39,7 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
         beer = beersRepository.getBeer(beerId);
         wish = wishlistRepository.getMyWishForBeer(currentUserId, getBeer());
         ratings = ratingsRepository.getRatingsForBeer(beerId);
-        myRatings = ratingsRepository.getMyRatingsForBeer(currentUserId,beerId);
+        myRatings = ratingsRepository.getMyRatingsForBeer(currentUserId, beerId);
         currentUserId.setValue(getCurrentUser().getUid());
     }
 
@@ -55,7 +55,9 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
         return ratings;
     }
 
-    public LiveData<List<Rating>> getMyRatings() {return myRatings;}
+    public LiveData<List<Rating>> getMyRatings() {
+        return myRatings;
+    }
 
     public void setBeerId(String beerId) {
         this.beerId.setValue(beerId);
@@ -69,13 +71,13 @@ public class DetailsViewModel extends ViewModel implements CurrentUser {
         return wishlistRepository.toggleUserWishlistItem(getCurrentUser().getUid(), itemId);
     }
 
-    public float calcAvgRating(List<Rating> ratings){
+    public float calcAvgRating(List<Rating> ratings) {
         float sum = 0;
-        if(!ratings.isEmpty()){
-            for(Rating rating : ratings){
+        if (!ratings.isEmpty()) {
+            for (Rating rating : ratings) {
                 sum += rating.getRating();
             }
-            sum/= ratings.size();
+            sum /= ratings.size();
         }
         return sum;
     }
