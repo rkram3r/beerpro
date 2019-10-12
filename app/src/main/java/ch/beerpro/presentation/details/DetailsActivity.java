@@ -30,6 +30,7 @@ import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.Rating;
 import ch.beerpro.domain.models.Wish;
+import ch.beerpro.presentation.details.addprice.AddPriceActivity;
 import ch.beerpro.presentation.details.createrating.CreateRatingActivity;
 
 import static ch.beerpro.presentation.utils.DrawableHelpers.setDrawableTint;
@@ -117,6 +118,14 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         startActivity(intent, options.toBundle());
     }
 
+    private void addNewPrice() {
+        Intent intent = new Intent(this, AddPriceActivity.class);
+        intent.putExtra(AddPriceActivity.ITEM, model.getBeer().getValue());
+        startActivity(intent);
+    }
+
+
+
     @OnClick(R.id.actionsButton)
     public void showBottomSheetDialog() {
         View view = getLayoutInflater().inflate(R.layout.single_bottom_sheet_dialog, null);
@@ -126,6 +135,12 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         Button ratingButton = (Button)dialog.findViewById(R.id.giveRating);
         ratingButton.setOnClickListener(v -> {
             addNewRating(myRatingBar);
+            dialog.dismiss();
+        });
+
+        Button priceButton = (Button) dialog.findViewById(R.id.addPrice);
+        priceButton.setOnClickListener(v -> {
+            addNewPrice();
             dialog.dismiss();
         });
 
