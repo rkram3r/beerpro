@@ -21,11 +21,11 @@ public class PriceRepository {
                 .whereEqualTo(Price.FIELD_BEER_ID, beerId), Price.class);
     }
 
-    public LiveData<List<Price>> getAllRatings() {
+    public LiveData<List<Price>> getAllPrices() {
         return allPrices;
     }
 
-    public LiveData<List<Price>> getRatingsForBeer(LiveData<String> beerId) {
+    public LiveData<List<Price>> getPricesForBeer(LiveData<String> beerId) {
         return switchMap(beerId, PriceRepository::getPricesByBeer);
     }
 }

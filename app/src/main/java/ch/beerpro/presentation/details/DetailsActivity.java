@@ -16,9 +16,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import ch.beerpro.domain.models.Price;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +58,18 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
 
     @BindView(R.id.ratingBar)
     RatingBar ratingBar;
+
+    @BindView(R.id.avgPrice)
+    TextView avgPrice;
+
+    @BindView(R.id.priceCurrency)
+    TextView priceCurrency;
+
+    @BindView(R.id.priceQuantity)
+    TextView priceQuantity;
+
+    @BindView(R.id.priceDescription)
+    TextView priceDescription;
 
     @BindView(R.id.name)
     TextView name;
@@ -106,6 +120,7 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         model.getRatings().observe(this, this::updateRatings);
         model.getMyRatings().observe(this, this::updateMyRatings);
         model.getWish().observe(this, this::toggleWishlistView);
+        model.getPrices().observe(this, this::updateAvgPrice);
 
         recyclerView.setAdapter(adapter);
     }
@@ -159,6 +174,26 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         avgRating.setText(getResources().getString(R.string.fmt_avg_rating, item.getAvgRating()));
         numRatings.setText(getResources().getString(R.string.fmt_ratings, item.getNumRatings()));
         toolbar.setTitle(item.getName());
+    }
+
+    private void updateAvgPrice(List<Price> prices){
+        float average = model.calcAvgPrice(prices);
+        if(average == 0){
+            avgPrice.setVisibility(View.INVISIBLE);
+            priceCurrency.setVisibility(View.INVISIBLE);
+            priceQuantity.setVisibility(View.INVISIBLE);
+            priceDescription.setText("Noch keine Preisangaben");
+        }
+        else{
+            avgPrice.setVisibility(View.VISIBLE);
+            priceCurrency.setVisibility(View.VISIBLE);
+            priceQuantity.setVisibility(View.VISIBLE);
+
+            DecimalFormat decimalFormat = new DecimalFormat("#.00");
+            avgPrice.setText(decimalFormat.format(average));
+            priceDescription.setText("Durchschnittlicher Preis");
+            priceCurrency.setText("Chf");
+        }
     }
 
     private void updateRatings(List<Rating> ratings) {

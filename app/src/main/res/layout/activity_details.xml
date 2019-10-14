@@ -103,6 +103,48 @@
                             app:layout_constraintStart_toStartOf="@+id/avgRating"
                             app:layout_constraintTop_toBottomOf="@+id/avgRating" />
 
+                        <TextView
+                        android:id="@+id/avgPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="2.50"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/ratingBar"
+                        app:layout_constraintTop_toTopOf="@+id/ratingBar" />
+
+                        <TextView
+                            android:id="@+id/priceCurrency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Chf"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toEndOf="@+id/avgPrice"
+                            app:layout_constraintTop_toTopOf="@+id/ratingBar" />
+
+                        <TextView
+                            android:id="@+id/priceQuantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="30dp"
+                            android:text="pro Flasche (0.33l)"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toEndOf="@+id/priceCurrency"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/priceCurrency" />
+
+                        <TextView
+                            android:id="@+id/priceDescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:color="@android:color/darker_gray"
+                            android:textSize="12sp"
+                            android:text="Durchschnittlicher Preis"
+                            app:layout_constraintStart_toStartOf="@+id/avgPrice"
+                            app:layout_constraintTop_toBottomOf="@+id/avgPrice" />
+
                         <View
                             android:id="@+id/separator"
                             android:layout_width="match_parent"
@@ -111,7 +153,7 @@
                             android:layout_marginTop="32dp"
                             android:background="#ffeeeeee"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+                            app:layout_constraintTop_toBottomOf="@+id/priceDescription" />
 
 
                         <TextView
