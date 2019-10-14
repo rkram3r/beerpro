@@ -72,12 +72,12 @@
 
 
                 <TextView
-                    android:id="@+id/myBeersCount"
+                    android:id="@+id/currencyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/default_margin"
-                    android:text="0" />
+                    android:text="CHF"/>
             </LinearLayout>
 
             <View

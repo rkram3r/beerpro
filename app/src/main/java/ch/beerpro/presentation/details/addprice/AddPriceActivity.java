@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import android.widget.EditText;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
@@ -22,6 +24,12 @@ public class AddPriceActivity extends AppCompatActivity {
     private static final String TAG = "AddPriceActivity";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.priceInput)
+    EditText priceInput;
+
+    @BindView(R.id.currencyText)
+    TextView currencyText;
 
     private AddPriceViewModel model;
 
@@ -68,6 +76,12 @@ public class AddPriceActivity extends AppCompatActivity {
     }
 
     private void savePrice() {
-
+        float price = Float.parseFloat(priceInput.getText().toString());
+        String currency = currencyText.getText().toString();
+        // TODO show a spinner!
+        // TODO return the new rating to update the new average immediately
+        model.savePrice(model.getItem(), price, currency)
+                .addOnSuccessListener(task -> onBackPressed())
+                .addOnFailureListener(error -> Log.e(TAG, "Could not save price", error));
     }
 }
