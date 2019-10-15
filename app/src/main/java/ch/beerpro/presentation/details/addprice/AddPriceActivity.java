@@ -1,6 +1,7 @@
 package ch.beerpro.presentation.details.addprice;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
@@ -76,6 +78,9 @@ public class AddPriceActivity extends AppCompatActivity {
     }
 
     private void savePrice() {
+        if (!allFieldsFilledOutCorrectly()) {
+            return;
+        }
         float price = Float.parseFloat(priceInput.getText().toString());
         String currency = currencyText.getText().toString();
         // TODO show a spinner!
@@ -83,5 +88,17 @@ public class AddPriceActivity extends AppCompatActivity {
         model.savePrice(model.getItem(), price, currency)
                 .addOnSuccessListener(task -> onBackPressed())
                 .addOnFailureListener(error -> Log.e(TAG, "Could not save price", error));
+    }
+
+    private boolean allFieldsFilledOutCorrectly(){
+        if(TextUtils.isEmpty(priceInput.getText())){
+            Toast.makeText(getApplicationContext(), "Geben Sie bitte einen Betrag an", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(Float.parseFloat(priceInput.getText().toString()) <= 0){
+            Toast.makeText(getApplicationContext(), "Ungültiger Betrag", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }
