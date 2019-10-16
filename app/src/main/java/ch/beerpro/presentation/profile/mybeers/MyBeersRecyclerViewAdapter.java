@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import ch.beerpro.domain.models.*;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -22,10 +23,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ch.beerpro.GlideApp;
 import ch.beerpro.R;
-import ch.beerpro.domain.models.Beer;
-import ch.beerpro.domain.models.MyBeer;
-import ch.beerpro.domain.models.MyBeerFromRating;
-import ch.beerpro.domain.models.MyBeerFromWishlist;
 import ch.beerpro.presentation.utils.DrawableHelpers;
 
 
@@ -131,6 +128,11 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
                         itemView.getResources().getColor(android.R.color.darker_gray));
                 removeFromWishlist.setText("Wunschliste");
                 onTheListSince.setText("beurteilt am");
+            } else if (entry instanceof MyBeerFromPrice) {
+                DrawableHelpers.setDrawableTint(removeFromWishlist,
+                        itemView.getResources().getColor(android.R.color.darker_gray));
+                removeFromWishlist.setText("Wunschliste");
+                onTheListSince.setText("Preis erstellt am");
             }
         }
     }
