@@ -21,11 +21,21 @@ public class PriceRepository {
                 .whereEqualTo(Price.FIELD_BEER_ID, beerId), Price.class);
     }
 
+    public static LiveData<List<Price>> getPricesByUser(String userId) {
+        return new FirestoreQueryLiveDataArray<>(FirebaseFirestore.getInstance().collection(Price.COLLECTION)
+                .orderBy(Price.FIELD_CREATION_DATE, Query.Direction.DESCENDING)
+                .whereEqualTo(Price.FIELD_USER_ID, userId), Price.class);
+    }
+
     public LiveData<List<Price>> getAllPrices() {
         return allPrices;
     }
 
     public LiveData<List<Price>> getPricesForBeer(LiveData<String> beerId) {
         return switchMap(beerId, PriceRepository::getPricesByBeer);
+    }
+
+    public LiveData<List<Price>> getMyPrices(LiveData<String> currentUserId) {
+        return switchMap(currentUserId, PriceRepository::getPricesByUser);
     }
 }

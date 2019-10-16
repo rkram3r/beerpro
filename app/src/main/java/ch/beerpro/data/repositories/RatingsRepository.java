@@ -4,7 +4,6 @@ import android.util.Pair;
 
 import androidx.lifecycle.LiveData;
 
-import ch.beerpro.domain.utils.CustomLiveData;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -95,8 +94,7 @@ public class RatingsRepository {
     }
 
     public LiveData<List<Rating>> getMyRatingsForBeer(LiveData<String> currentUserId, LiveData<String> beerId){
-        CustomLiveData trigger = new CustomLiveData(currentUserId,beerId);
-        return switchMap(trigger, RatingsRepository::getRatingsByBeerAndUser);
+        return switchMap(combineLatest(currentUserId,beerId), RatingsRepository::getRatingsByBeerAndUser);
     }
 
     public LiveData<List<Rating>> getMyRatings(LiveData<String> currentUserId) {
