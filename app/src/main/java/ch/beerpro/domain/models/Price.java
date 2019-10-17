@@ -21,7 +21,7 @@ public class Price implements Entity {
     private String currency;
     private Date creationDate;
 
-    public Price(String id, String beerId, String beerName, String userId, String userName, float price, String currency, Date creationDate){
+    public Price(String id, String beerId, String beerName, String userId, String userName, float price, String currency, Date creationDate) {
         this.id = id;
         this.beerId = beerId;
         this.beerName = beerName;
@@ -36,41 +36,69 @@ public class Price implements Entity {
 
     }
 
-    public String getId(){
+    public String getId() {
         return this.id;
     }
 
-    public String getBeerId(){ return this.beerId;}
+    public String getBeerId() {
+        return this.beerId;
+    }
 
-    public String getBeerName(){ return this.beerName;}
+    public String getBeerName() {
+        return this.beerName;
+    }
 
-    public String getUserId(){ return this.userId;}
+    public String getUserId() {
+        return this.userId;
+    }
 
-    public String getUserName(){ return this.userName;}
+    public String getUserName() {
+        return this.userName;
+    }
 
-    public float getPrice() { return this.price;}
+    public float getPrice() {
+        return this.price;
+    }
 
-    public String getCurrency() {return this.currency;}
+    public String getCurrency() {
+        return this.currency;
+    }
 
-    public Date getCreationDate() { return this.creationDate;}
+    public Date getCreationDate() {
+        return this.creationDate;
+    }
 
-    public void setId(String id){
+    public void setId(String id) {
         this.id = id;
     }
 
-    public void setBeerId(String beerId) {this.beerId = beerId; }
+    public void setBeerId(String beerId) {
+        this.beerId = beerId;
+    }
 
-    public void setBeerName(String beerName) {this.beerName = beerName;}
+    public void setBeerName(String beerName) {
+        this.beerName = beerName;
+    }
 
-    public void setUserId(String userId) {this.userId = userId;}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-    public void setUserName(String userName) {this.userName = userName;}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-    public void setPrice(float price) {this.price = price;}
+    public void setPrice(float price) {
+        this.price = price;
+    }
 
-    void setCurrency(String currency) {this.currency = currency;}
+    void setCurrency(String currency) {
+        this.currency = currency;
+    }
 
-    void setCreationDate(Date creationDate) {this.creationDate = creationDate;}
+    void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
 
     @NonNull
     public String toString() {

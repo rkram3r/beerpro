@@ -1,10 +1,8 @@
 package ch.beerpro.domain.utils;
 
 import android.util.Pair;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
-
 import org.apache.commons.lang3.tuple.Triple;
 
 public class LiveDataExtensions {
@@ -124,7 +122,7 @@ public class LiveDataExtensions {
 
             private void update() {
                 if (lastA != null && lastB != null && lastC != null && lastD != null) {
-                    this.setValue(new Quadruple<A,B,C,D>(lastA,lastB,lastC,lastD));
+                    this.setValue(new Quadruple<A, B, C, D>(lastA, lastB, lastC, lastD));
                 }
             }
         };

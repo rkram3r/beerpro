@@ -1,24 +1,17 @@
 package ch.beerpro.data.repositories;
 
 import androidx.lifecycle.LiveData;
-
 import ch.beerpro.domain.models.*;
 import ch.beerpro.domain.utils.Quadruple;
-import org.apache.commons.lang3.tuple.Triple;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static androidx.lifecycle.Transformations.map;
 import static ch.beerpro.domain.utils.LiveDataExtensions.combineLatest;
 
 public class MyBeersRepository {
 
-    private static List<MyBeer> getMyBeers(Quadruple<List<Wish>, List<Rating>,List<Price>, HashMap<String, Beer>> input) {
+    private static List<MyBeer> getMyBeers(Quadruple<List<Wish>, List<Rating>, List<Price>, HashMap<String, Beer>> input) {
         List<Wish> wishlist = input.getFirst();
         List<Rating> ratings = input.getSecond();
         List<Price> prices = input.getThird();
@@ -45,7 +38,7 @@ public class MyBeersRepository {
 
         for (Price price : prices) {
             String beerId = price.getBeerId();
-            if (beersAlreadyOnTheList.contains(beerId)){
+            if (beersAlreadyOnTheList.contains(beerId)) {
                 // if the beer is already on the wish list, don't add it again
             } else {
                 result.add(new MyBeerFromPrice(price, beers.get(beerId)));

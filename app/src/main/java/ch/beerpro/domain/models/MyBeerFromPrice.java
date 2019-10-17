@@ -8,7 +8,7 @@ public class MyBeerFromPrice implements MyBeer {
     private Price price;
     private Beer beer;
 
-    public MyBeerFromPrice(Price price, Beer beer){
+    public MyBeerFromPrice(Price price, Beer beer) {
         this.price = price;
         this.beer = beer;
     }

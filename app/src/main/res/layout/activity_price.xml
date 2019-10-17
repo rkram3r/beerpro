@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    tools:context=".presentation.details.addprice.AddPriceActivity">
+                                                     xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                     xmlns:tools="http://schemas.android.com/tools"
+                                                     android:layout_width="match_parent"
+                                                     android:layout_height="match_parent"
+                                                     android:background="@android:color/white"
+                                                     tools:context=".presentation.details.addprice.AddPriceActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:background="?attr/colorPrimary"
             android:theme="@style/ToolBarStyle"
             app:layout_collapseMode="pin"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -49,7 +49,7 @@
                     android:layout_height="24dp"
                     android:layout_gravity="center_vertical"
                     android:tint="@android:color/black"
-                    app:srcCompat="@drawable/ic_attach_money_black_24dp" />
+                    app:srcCompat="@drawable/ic_attach_money_black_24dp"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -57,7 +57,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/default_margin"
                     android:layout_weight="0.5"
-                    android:text="Preis" />
+                    android:text="Preis"/>
 
                 <EditText
                     android:id="@+id/priceInput"
@@ -68,7 +68,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="2"
                     android:hint="Required"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal"/>
 
 
                 <TextView
@@ -83,7 +83,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#0f5d4037" />
+                android:background="#0f5d4037"/>
 
             <LinearLayout
 
@@ -101,7 +101,7 @@
                     android:layout_height="24dp"
                     android:layout_gravity="center_vertical"
                     android:tint="@android:color/black"
-                    app:srcCompat="@drawable/ic_bottle" />
+                    app:srcCompat="@drawable/ic_bottle"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -109,7 +109,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/default_margin"
                     android:layout_weight="1"
-                    android:text="Menge" />
+                    android:text="Menge"/>
 
                 <TextView
                     android:id="@+id/quantityText"

@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
 import androidx.lifecycle.ViewModelProviders;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ch.beerpro.R;
@@ -90,12 +88,12 @@ public class AddPriceActivity extends AppCompatActivity {
                 .addOnFailureListener(error -> Log.e(TAG, "Could not save price", error));
     }
 
-    private boolean allFieldsFilledOutCorrectly(){
-        if(TextUtils.isEmpty(priceInput.getText())){
+    private boolean allFieldsFilledOutCorrectly() {
+        if (TextUtils.isEmpty(priceInput.getText())) {
             Toast.makeText(getApplicationContext(), "Geben Sie bitte einen Betrag an", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(Float.parseFloat(priceInput.getText().toString()) <= 0){
+        if (Float.parseFloat(priceInput.getText().toString()) <= 0) {
             Toast.makeText(getApplicationContext(), "Ungültiger Betrag", Toast.LENGTH_SHORT).show();
             return false;
         }

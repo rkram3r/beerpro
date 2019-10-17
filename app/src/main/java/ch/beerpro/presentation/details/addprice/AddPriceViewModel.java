@@ -2,7 +2,6 @@ package ch.beerpro.presentation.details.addprice;
 
 import android.util.Log;
 import androidx.lifecycle.ViewModel;
-
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.Price;
 import ch.beerpro.presentation.utils.EntityClassSnapshotParser;
@@ -27,11 +26,11 @@ public class AddPriceViewModel extends ViewModel {
         this.item = item;
     }
 
-    public Task<Price> savePrice(Beer item, float price, String currency){
+    public Task<Price> savePrice(Beer item, float price, String currency) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
 
-        Price newPrice = new Price(null, item.getId(), item.getName(), user.getUid(), user.getDisplayName(),price, currency, new Date());
+        Price newPrice = new Price(null, item.getId(), item.getName(), user.getUid(), user.getDisplayName(), price, currency, new Date());
         Log.i(TAG, "Adding new price: " + newPrice.toString());
 
         return FirebaseFirestore.getInstance().collection("prices").add(newPrice).continueWithTask(task -> {

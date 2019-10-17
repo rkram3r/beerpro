@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
@@ -15,25 +14,23 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import ch.beerpro.domain.models.Price;
-import com.bumptech.glide.request.RequestOptions;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ch.beerpro.GlideApp;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
+import ch.beerpro.domain.models.Price;
 import ch.beerpro.domain.models.Rating;
 import ch.beerpro.domain.models.Wish;
 import ch.beerpro.presentation.details.addprice.AddPriceActivity;
 import ch.beerpro.presentation.details.createrating.CreateRatingActivity;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import static ch.beerpro.presentation.utils.DrawableHelpers.setDrawableTint;
 
@@ -140,20 +137,19 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
     }
 
 
-
     @OnClick(R.id.actionsButton)
     public void showBottomSheetDialog() {
         View view = getLayoutInflater().inflate(R.layout.single_bottom_sheet_dialog, null);
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(view);
 
-        Button ratingButton = (Button)dialog.findViewById(R.id.giveRating);
+        Button ratingButton = dialog.findViewById(R.id.giveRating);
         ratingButton.setOnClickListener(v -> {
             addNewRating(myRatingBar);
             dialog.dismiss();
         });
 
-        Button priceButton = (Button) dialog.findViewById(R.id.addPrice);
+        Button priceButton = dialog.findViewById(R.id.addPrice);
         priceButton.setOnClickListener(v -> {
             addNewPrice();
             dialog.dismiss();
@@ -176,15 +172,14 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         toolbar.setTitle(item.getName());
     }
 
-    private void updateAvgPrice(List<Price> prices){
+    private void updateAvgPrice(List<Price> prices) {
         float average = model.calcAvgPrice(prices);
-        if(average == 0){
+        if (average == 0) {
             avgPrice.setVisibility(View.INVISIBLE);
             priceCurrency.setVisibility(View.INVISIBLE);
             priceQuantity.setVisibility(View.INVISIBLE);
             priceDescription.setText("Noch keine Preisangaben");
-        }
-        else{
+        } else {
             avgPrice.setVisibility(View.VISIBLE);
             priceCurrency.setVisibility(View.VISIBLE);
             priceQuantity.setVisibility(View.VISIBLE);
@@ -199,6 +194,7 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
     private void updateRatings(List<Rating> ratings) {
         adapter.submitList(new ArrayList<>(ratings));
     }
+
     private void updateMyRatings(List<Rating> ratings) {
         myRatingBar.setRating(model.calcAvgRating(ratings));
     }
