@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:focusableInTouchMode="true"
-    tools:context=".presentation.details.DetailsActivity">
+                                                     xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                     xmlns:tools="http://schemas.android.com/tools"
+                                                     android:layout_width="match_parent"
+                                                     android:layout_height="match_parent"
+                                                     android:focusableInTouchMode="true"
+                                                     tools:context=".presentation.details.DetailsActivity">
 
 
     <androidx.core.widget.NestedScrollView
@@ -34,7 +34,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/bg_bottles" />
+                    app:srcCompat="@drawable/bg_bottles"/>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="120dp"
@@ -51,7 +51,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:transitionName="image"
-                        app:srcCompat="@drawable/ic_beer_glass_empty" />
+                        app:srcCompat="@drawable/ic_beer_glass_empty"/>
 
                 </androidx.cardview.widget.CardView>
 
@@ -76,7 +76,7 @@
                             android:text="4.8"
                             android:textSize="30sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"/>
 
                         <TextView
                             android:id="@+id/numRatings"
@@ -87,7 +87,7 @@
                             android:text="3 Bewertungen"
                             android:textSize="12sp"
                             app:layout_constraintBaseline_toBaselineOf="@+id/avgRating"
-                            app:layout_constraintStart_toEndOf="@+id/avgRating" />
+                            app:layout_constraintStart_toEndOf="@+id/avgRating"/>
 
 
                         <RatingBar
@@ -101,7 +101,49 @@
                             android:stepSize="0.5"
                             android:theme="@style/RatingBar"
                             app:layout_constraintStart_toStartOf="@+id/avgRating"
-                            app:layout_constraintTop_toBottomOf="@+id/avgRating" />
+                            app:layout_constraintTop_toBottomOf="@+id/avgRating"/>
+
+                        <TextView
+                            android:id="@+id/avgPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:text="2.50"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toStartOf="@+id/ratingBar"
+                            app:layout_constraintTop_toTopOf="@+id/ratingBar"/>
+
+                        <TextView
+                            android:id="@+id/priceCurrency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Chf"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toEndOf="@+id/avgPrice"
+                            app:layout_constraintTop_toTopOf="@+id/ratingBar"/>
+
+                        <TextView
+                            android:id="@+id/priceQuantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="30dp"
+                            android:text="pro Flasche (0.33l)"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toEndOf="@+id/priceCurrency"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/priceCurrency"/>
+
+                        <TextView
+                            android:id="@+id/priceDescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:color="@android:color/darker_gray"
+                            android:textSize="12sp"
+                            android:text="Durchschnittlicher Preis"
+                            app:layout_constraintStart_toStartOf="@+id/avgPrice"
+                            app:layout_constraintTop_toBottomOf="@+id/avgPrice"/>
 
                         <View
                             android:id="@+id/separator"
@@ -111,7 +153,7 @@
                             android:layout_marginTop="32dp"
                             android:background="#ffeeeeee"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+                            app:layout_constraintTop_toBottomOf="@+id/priceDescription"/>
 
 
                         <TextView
@@ -123,7 +165,7 @@
                             android:text="Quöllfrisch Hell"
                             android:textAppearance="?attr/textAppearanceListItem"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/manufacturer" />
+                            app:layout_constraintTop_toBottomOf="@+id/manufacturer"/>
 
                         <TextView
                             android:id="@+id/manufacturer"
@@ -133,7 +175,7 @@
                             android:layout_marginTop="8dp"
                             android:text="Locher Appenzeller Bier"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/separator" />
+                            app:layout_constraintTop_toBottomOf="@+id/separator"/>
 
                         <TextView
                             android:id="@+id/category"
@@ -143,7 +185,7 @@
                             android:layout_marginTop="8dp"
                             android:text="Pale Lager"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/name" />
+                            app:layout_constraintTop_toBottomOf="@+id/name"/>
 
                         <View
                             android:id="@+id/separator3"
@@ -153,7 +195,7 @@
                             android:layout_marginTop="16dp"
                             android:background="#ffeeeeee"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/category" />
+                            app:layout_constraintTop_toBottomOf="@+id/category"/>
 
                         <RatingBar
                             android:id="@+id/myRatingBar"
@@ -170,7 +212,7 @@
                             android:transitionName="rating"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/separator3" />
+                            app:layout_constraintTop_toBottomOf="@+id/separator3"/>
 
                         <TextView
                             android:id="@+id/myRatingExplanation"
@@ -183,7 +225,7 @@
                             android:textStyle="italic"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/myRatingBar" />
+                            app:layout_constraintTop_toBottomOf="@+id/myRatingBar"/>
 
 
                         <View
@@ -194,7 +236,7 @@
                             android:background="#ffeeeeee"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/myRatingExplanation" />
+                            app:layout_constraintTop_toBottomOf="@+id/myRatingExplanation"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -214,12 +256,12 @@
                                 android:drawableTint="@android:color/darker_gray"
                                 android:text="Aktionen"
                                 android:textColor="@android:color/darker_gray"
-                                android:textSize="10sp" />
+                                android:textSize="10sp"/>
 
                             <View
                                 android:layout_width="1dp"
                                 android:layout_height="match_parent"
-                                android:background="#ffeeeeee" />
+                                android:background="#ffeeeeee"/>
 
                             <ToggleButton
                                 android:id="@+id/wishlist"
@@ -232,12 +274,12 @@
                                 android:textOff="Wunschliste"
                                 android:textOn="Wunschliste"
                                 android:textColor="@android:color/darker_gray"
-                                android:textSize="10sp" />
+                                android:textSize="10sp"/>
 
                             <View
                                 android:layout_width="1dp"
                                 android:layout_height="match_parent"
-                                android:background="#ffeeeeee" />
+                                android:background="#ffeeeeee"/>
 
                             <Button
                                 android:id="@+id/button2"
@@ -249,7 +291,7 @@
                                 android:drawableTint="@android:color/darker_gray"
                                 android:text="Bier Teilen"
                                 android:textColor="@android:color/darker_gray"
-                                android:textSize="10sp" />
+                                android:textSize="10sp"/>
                         </LinearLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -258,7 +300,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="8dp" />
+                android:layout_height="8dp"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -280,20 +322,20 @@
                         android:textAppearance="?attr/textAppearanceListItem"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/activity_details_ratings_listentry" />
+                        tools:listitem="@layout/activity_details_ratings_listentry"/>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="64dp" />
+                android:layout_height="64dp"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
