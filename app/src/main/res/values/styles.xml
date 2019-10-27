@@ -14,18 +14,12 @@
         <item name="android:windowSharedElementExitTransition">@transition/change_view_transform</item>
     </style>
 
-    <style name="AppTheme.RED" parent="AppTheme.AppBarOverlay">
+    <style name="AppTheme.DARK" parent="AppTheme.AppBarOverlay">
         <item name="colorPrimary">@color/colorPrimaryRed</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkRed</item>
         <item name="colorAccent">@color/colorPrimaryLightRed</item>
+        <item name="android:windowBackground">@color/windowBackgroundColor</item>
     </style>
-    <style name="AppTheme.GREEN" parent="AppTheme.AppBarOverlay">
-        <item name="colorPrimary">@color/colorPrimaryGreen</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkGreen</item>
-        <item name="colorAccent">@color/colorPrimaryLightGreen</item>
-    </style>
-
-
     <style name="DetailsPageTheme" parent="AppTheme">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>

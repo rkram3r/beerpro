@@ -7,8 +7,5 @@
     <color name="colorAccent">#5d4037</color>
     <color name="colorPrimaryRed">#B32D45</color>
     <color name="colorPrimaryLightRed">#EF002A</color>
-    <color name="colorPrimaryDarkRed">#9B001C</color>
-    <color name="colorPrimaryGreen">#00CC00</color>
-    <color name="colorPrimaryLightGreen">#67E667</color>
-    <color name="colorPrimaryDarkGreen">#008500</color>
+    <color name="colorPrimaryDarkRed">#1D9B001C</color>
 </resources>

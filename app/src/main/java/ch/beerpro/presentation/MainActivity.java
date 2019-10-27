@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity
     private void setThemeInPreferences() {
         int currentTheme = getThemeFromPreferences();
         SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
-        editor.putInt("THEME", currentTheme == R.style.AppTheme_GREEN ? R.style.AppTheme_RED : R.style.AppTheme_GREEN);
+        editor.putInt("THEME", currentTheme == R.style.AppTheme_DARK ? R.style.AppTheme : R.style.AppTheme_DARK);
         editor.commit();
         recreate();
     }
