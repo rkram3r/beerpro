@@ -13,8 +13,7 @@
         <item name="android:windowSharedElementEnterTransition">@transition/change_view_transform</item>
         <item name="android:windowSharedElementExitTransition">@transition/change_view_transform</item>
     </style>
-
-    <style name="AppTheme.DARK" parent="AppTheme.AppBarOverlay">
+    <style name="AppTheme.DARK">
         <item name="colorPrimary">@color/colorPrimaryRed</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkRed</item>
         <item name="colorAccent">@color/colorPrimaryLightRed</item>
@@ -27,6 +26,7 @@
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+
 
     <style name="CollapsingToolbarLayoutExpandedTextStyle" parent="AppTheme">
         <item name="android:textColor">@android:color/transparent</item>
