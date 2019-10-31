@@ -158,6 +158,15 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         dialog.show();
     }
 
+    @OnClick(R.id.button2)
+    public void shareBeer() {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "Hi Beerbro! Look at that beer:"+name.getText().toString();
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
+
     private void updateBeer(Beer item) {
         name.setText(item.getName());
         manufacturer.setText(item.getManufacturer());
