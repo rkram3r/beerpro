@@ -1,12 +1,15 @@
 package ch.beerpro.presentation;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Xml;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(getThemeFromPreferences());
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
@@ -68,6 +72,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
     }
+
 
     private void setupViewPager(ViewPager viewPager, TabLayout tabLayout) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -107,15 +112,33 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
+
         inflater.inflate(R.menu.menu_home_screen, menu);
         return true;
     }
 
+    private int getThemeFromPreferences() {
+        SharedPreferences settings = getPreferences(MODE_PRIVATE);
+        return settings.getInt("THEME", R.style.AppTheme);
+    }
+
+    private void setThemeInPreferences() {
+        int currentTheme = getThemeFromPreferences();
+        SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+        editor.putInt("THEME", currentTheme == R.style.AppTheme_DARK ? R.style.AppTheme : R.style.AppTheme_DARK);
+        editor.commit();
+        recreate();
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.action_logout:
                 logout();
+                return true;
+            case R.id.action_change_theme:
+                this.setThemeInPreferences();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
