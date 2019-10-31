@@ -17,18 +17,7 @@ Die Datei speichern Sie in diesem Ordner in der service-key.json Datei ab.
 Nun sind Sie bereit die Daten zu importieren.
 
 ```
-node convert-ratebeer-csv-to-json.js locher.csv "Locher Appenzeller Bier" > data.json
-
-node import-data.js
-
-node convert-ratebeer-csv-to-json.js schuetzengarten.csv "Schützengarten" > data.json
-
-node import-data.js
-
-node convert-ratebeer-csv-to-json.js kornhausbraeu.csv "Kornhausbräu" > data.json
-
-node import-data.js
-
+npm start
 ```
 
-Wie Sie erkennen können stammen die Daten von der Webseite Ratebeer, welche  im CSV Format vorliegen. Diese werden nach JSON umgewandelt und dann in den Firestore importiert.
+Wie Sie erkennen können stammen die Daten von der Webseite Ratebeer, welche im CSV Format vorliegen. Diese werden nach JSON umgewandelt und dann in den Firestore importiert.
